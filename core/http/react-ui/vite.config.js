@@ -3,9 +3,13 @@ import react from '@vitejs/plugin-react'
 
 const backendUrl = process.env.LOCALAI_URL || 'http://localhost:8080'
 
+// When building for Capacitor (Android/iOS), use './' as the base path so
+// assets resolve correctly from the native webview's local filesystem.
+const isCapacitorBuild = process.env.CAPACITOR_BUILD === '1'
+
 export default defineConfig({
   plugins: [react()],
-  base: '/',
+  base: isCapacitorBuild ? './' : '/',
   server: {
     port: 3000,
     proxy: {
@@ -30,3 +34,4 @@ export default defineConfig({
     assetsDir: 'assets',
   },
 })
+

@@ -69,6 +69,8 @@ docs/static/gallery.html
 # React UI build artifacts (keep placeholder dist/index.html)
 core/http/react-ui/node_modules/
 core/http/react-ui/dist
+# Capacitor generated Android project (run `npm run build:android` to regenerate)
+core/http/react-ui/android/
 
 # Extracted backend binaries for container-based testing
 local-backends/

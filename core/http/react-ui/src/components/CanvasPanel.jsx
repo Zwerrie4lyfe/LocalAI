@@ -10,17 +10,17 @@ export default function CanvasPanel({ artifacts, selectedId, onSelect, onClose }
   const codeRef = useRef(null)
 
   const current = artifacts.find(a => a.id === selectedId) || artifacts[0]
-  if (!current) return null
-
-  const hasPreview = current.type === 'code' && ['html', 'svg', 'md', 'markdown'].includes(current.language)
+  const hasPreview = current ? current.type === 'code' && ['html', 'svg', 'md', 'markdown'].includes(current.language) : false
 
   useEffect(() => {
-    if (codeRef.current && !showPreview && current.type === 'code') {
+    if (codeRef.current && !showPreview && current && current.type === 'code') {
       codeRef.current.querySelectorAll('pre code').forEach(block => {
         hljs.highlightElement(block)
       })
     }
   }, [current, showPreview])
+
+  if (!current) return null
 
   const handleCopy = () => {
     const text = current.code || current.url || ''
