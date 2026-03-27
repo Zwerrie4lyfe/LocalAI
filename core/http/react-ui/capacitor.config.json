@@ -1,0 +1,8 @@
+{
+  "appId": "io.localai.app",
+  "appName": "LocalAI",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "http"
+  }
+}
